@@ -2,9 +2,7 @@ import datetime
 import requests
 
 # bibliotecas para conexao com o banco de dados
-import psycopg2 as pg
-import pandas as pd
-from sqlalchemy import create_engine
+import psycopg2
 
 
 
@@ -13,7 +11,7 @@ from sqlalchemy import create_engine
 conexao = psycopg2.connect(database = "meta",
                            host = "localhost",
                            user = "postgres",
-                           password = "Fernando1@",
+                           password = "postgres",
                            port = "5432")
 
 #print(conexao.info)
@@ -23,27 +21,6 @@ cursor = conexao.cursor()
 
 # criar classes
 
-class Empresa:
-    def __init__(self, id, nome_empresa):
-        self.id = id
-        self.nome_empresa = nome_empresa
-    
-    #CRUD
-    def criar_empresa():
-        nova_empresa = input()
-        comando =f'INSERT INTO empresa ("{nova_empresa}")'
-        cursor.execute(comando)
-        conexao.commit() #edita banco de dados
-                     
-    def salvar_empresa():
-        pass
-    def inativar_empresa():
-        pass
-    def editar_empresa():
-        edita_empresa = input()
-        comando =f'UPDATE empresa SET nome_empresa = ("{edita_empresa}")'
-        cursor.execute(comando)
-        conexao.commit() #edita banco de dados
         
 class Departamento:
     def __init__(self, id, descricao_departamento, id_empresa):
